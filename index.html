@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Pide tu página personalizada gratis o con pago</title>
+  <style>
+    :root {
+      --bg-primary: #000000;
+      --bg-secondary: #1a1a1a;
+      --card-bg: rgba(26, 26, 26, 0.9);
+      --accent-primary: #FFD700;
+      --accent-secondary: #FFA500;
+      --text-primary: #FFFFFF;
+      --text-muted: #A9A9A9;
+      --glass: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 215, 0, 0.2);
+      --border-led: #FFD700;
+      --success: #FFD700;
+      --glow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, 'Helvetica Neue', Arial;
+      color: var(--text-primary);
+      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, #111111 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      width: 100%;
+      max-width: 1200px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+      background: var(--glass);
+      padding: 20px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--glow);
+      text-align: center;
+    }
+    .brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .profile-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--bg-primary);
+      font-weight: 800;
+      font-size: 24px;
+      box-shadow: var(--glow);
+      border: 2px solid var(--border-led);
+      overflow: hidden;
+    }
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .username {
+      font-size: 18px;
+      color: var(--accent-primary);
+      font-weight: 700;
+    }
+    h1 {
+      margin: 0;
+      font-size: 28px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    p.lead {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    .hero {
+      margin-bottom: 40px;
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--glow);
+    }
+    .hero h2 {
+      margin: 0 0 12px 0;
+      font-size: 24px;
+      color: var(--text-primary);
+      text-align: center;
+    }
+    .hero p {
+      color: var(--text-muted);
+      font-size: 16px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 26px;
+      margin: 40px 0 20px 0;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      border-bottom: 2px solid var(--border-led);
+      padding-bottom: 10px;
+      box-shadow: var(--glow);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 30px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 24px;
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: var(--glow);
+      border-left: 4px solid var(--border-led);
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 32px rgba(255, 215, 0, 0.3);
+    }
+    .days {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 50px;
+      background: linear-gradient(135deg, var(--success), var(--accent-secondary));
+      color: var(--bg-primary);
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 12px;
+      box-shadow: var(--glow);
+      border: 1px solid var(--border-led);
+    }
+    .card h3 {
+      margin: 0 0 12px 0;
+      font-size: 20px;
+      color: var(--text-primary);
+    }
+    .card p.muted {
+      margin: 0 0 8px 0;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    ul {
+      padding-left: 20px;
+      color: var(--text-muted);
+      margin: 8px 0 16px 0;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    ul li {
+      margin-bottom: 4px;
+    }
+    ul strong {
+      color: var(--accent-primary);
+    }
+    .cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: 0;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--glow);
+      border: 1px solid var(--border-led);
+      flex: 1;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: var(--bg-primary);
+    }
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+    }
+
+    .paid {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 165, 0, 0.05));
+      border: 2px solid var(--border-led);
+      padding: 24px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      box-shadow: var(--glow);
+      border-left: 4px solid var(--accent-secondary);
+    }
+    .paid h3 {
+      margin: 0;
+      color: var(--accent-primary);
+      font-size: 20px;
+    }
+    .paid p {
+      color: var(--text-muted);
+      margin: 4px 0 0 0;
+      font-size: 14px;
+    }
+    .paid strong {
+      color: var(--success);
+      font-size: 16px;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+      header {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        text-align: center;
+      }
+      .profile-section {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .hero {
+        text-align: center;
+      }
+      .paid {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      .cta {
+        width: 100%;
+        justify-content: center;
+      }
+      .btn {
+        min-width: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="profile-section">
+          <div class="logo">
+            <img src="img/perfil.jpg" alt="Perfil @Yosoytony">
+          </div>
+          <div class="username">@Yosoytony</div>
+        </div>
+        <h1>Pide tu página personalizada gratis o con pago</h1>
+       
+      </div>
+    </header>
+
+    <section class="hero">
+   <h2>¿Cómo obtener acceso?</h2>
+<p>
+  📌 <strong>Acceso Gratis (temporal)</strong><br>
+  1. Elige la opción gratuita.<br>
+  2. Invita a tus amigos a los canales oficiales del creador.<br>
+  3. Cada amigo debe enviar una <em>captura de pantalla</em> que demuestre que se unió.<br>
+  4. Una vez que el creador verifique las capturas, tu acceso se activará.<br>
+  5. Recuerda: este acceso es <strong>temporal</strong> y puede caducar después de un tiempo.<br><br>
+
+  📌 <strong>Acceso de Pago (permanente)</strong><br>
+  1. Realiza un <strong>pago único de US$2.90</strong> mediante PayPal o Yape.<br>
+  2. No necesitas invitar amigos ni enviar comprobantes.<br>
+  3. Tras confirmar el pago, tu acceso se activa <strong>de inmediato</strong>.<br>
+  4. Este acceso es <strong>permanente</strong>: no caduca ni requiere renovaciones.
+</p>
+
+    </section>
+
+    <h2 class="section-title">Formas Gratuitas</h2>
+    <div class="grid">
+      <!-- 1 día -->
+      <div class="card">
+        <div class="days">Disponible por 1 día</div>
+        <h3>Disponible por 1 día</h3>
+        <p class="muted">Tarea:</p>
+        <ul>
+          <li>Invita <strong>2 amigos</strong> a <strong>suscribirse al canal de TikTok del creador</strong>. Cada uno envía SU captura de suscripción.</li>
+          <li>Invita <strong>2 amigos</strong> a <strong>unirse al canal de WhatsApp del creador</strong>. Cada uno envía SU captura de unión.</li>
+        </ul>
+        <p class="muted" style="font-size: 13px; font-style: italic;">Total: 4 capturas de amigos.</p>
+        <div class="cta">
+          <button class="btn btn-primary" onclick="openWhatsApp('1 día')">Elegir esta oferta</button>
+        </div>
+      </div>
+
+      <!-- 3 días -->
+      <div class="card">
+        <div class="days">Disponible por 3 días</div>
+        <h3>Disponible por 3 días</h3>
+        <p class="muted">Tarea:</p>
+        <ul>
+          <li>Invita <strong>4 amigos</strong> a <strong>suscribirse al canal de TikTok del creador</strong>. Cada uno envía SU captura.</li>
+          <li>Invita <strong>4 amigos</strong> a <strong>unirse al canal de WhatsApp del creador</strong>. Cada uno envía SU captura.</li>
+        </ul>
+        <p class="muted" style="font-size: 13px; font-style: italic;">Total: 8 capturas de amigos.</p>
+        <div class="cta">
+          <button class="btn btn-primary" onclick="openWhatsApp('3 días')">Elegir esta oferta</button>
+        </div>
+      </div>
+
+      <!-- 5 días -->
+      <div class="card">
+        <div class="days">Disponible por 5 días</div>
+        <h3>Disponible por 5 días</h3>
+        <p class="muted">Tarea:</p>
+        <ul>
+          <li>Invita <strong>6 amigos</strong> a <strong>suscribirse al canal de TikTok del creador</strong>. Cada uno envía SU captura de suscripción.</li>
+          <li>Invita <strong>6 amigos</strong> a <strong>unirse al canal de WhatsApp del creador</strong>. Cada uno envía SU captura de unión.</li>
+        </ul>
+        <p class="muted" style="font-size: 13px; font-style: italic;">Total: 12 capturas de amigos.</p>
+        <div class="cta">
+          <button class="btn btn-primary" onclick="openWhatsApp('5 días')">Elegir esta oferta</button>
+        </div>
+      </div>
+
+      <!-- 7 días -->
+      <div class="card">
+        <div class="days">Disponible por 7 días</div>
+        <h3>Disponible por 7 días</h3>
+        <p class="muted">Tarea:</p>
+        <ul>
+          <li>Invita <strong>9 amigos</strong> a <strong>suscribirse al canal de TikTok del creador</strong>. Cada uno envía SU captura de suscripción.</li>
+          <li>Invita <strong>9 amigos</strong> a <strong>unirse al canal de WhatsApp del creador</strong>. Cada uno envía SU captura de unión.</li>
+        </ul>
+        <p class="muted" style="font-size: 13px; font-style: italic;">Total: 18 capturas de amigos.</p>
+        <div class="cta">
+          <button class="btn btn-primary" onclick="openWhatsApp('7 días')">Elegir esta oferta</button>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Formas con Pago</h2>
+    <div class="grid">
+      <!-- Pago -->
+      <div class="paid card" style="grid-column: 1 / -1;">
+        <div>
+          <h3>Página permanente</h3>
+          <p>¡Sin tareas! Paga <strong>US$2.90</strong> por PayPal o Yape (Perú) y listo para siempre.</p>
+        </div>
+        <div class="cta" style="margin: 0; width: auto;">
+          <button class="btn btn-primary" onclick="openWhatsApp('Pago US$2.90 - página permanente')">Pagar US$2.90 por PayPal o Yape (Perú)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const WA_NUMBER = '51918867591'; // +51 918867591
+
+    function openWhatsApp(oferta) {
+      let defaultMsg;
+      if (oferta.includes('Pago')) {
+        defaultMsg = `Digo, escojo para pagar y pedir mi página personalizada.`;
+      } else {
+        defaultMsg = `Hola, escojo esta opción de ${oferta}. Quiero cumplir esta tarea para obtener mi página personalizada.`;
+      }
+      const url = `https://wa.me/${WA_NUMBER}?text=` + encodeURIComponent(defaultMsg);
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
